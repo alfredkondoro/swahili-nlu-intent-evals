@@ -1,0 +1,11 @@
+domain,AfroXLMR,XLM-R,mBERT,test_n
+Travel Transport And Accomodation,0.8631,0.5934,0.8741,107
+Communication,0.3452,0.1572,0.1948,104
+Finance,0.5991,0.2887,0.4148,93
+Food Ordering,0.4567,0.1539,0.2496,89
+Device Settings,0.6515,0.4362,0.6386,82
+Media And Entertainment,0.1748,0.1295,0.3408,70
+Health Lifestyle,0.4309,0.2307,0.1712,58
+News And Information,0.6867,0.5331,0.6227,45
+Home Automation,0.2799,0.0767,0.3844,38
+Ride Hailing And Transport Services,0.1632,0.0746,0.119,36

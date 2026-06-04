@@ -1,0 +1,16 @@
+model,task,accuracy,macro_f1,weighted_f1,slot_f1
+mBERT,Intent,0.5734,0.4834,0.514,—
+XLM-R,Intent,0.4418,0.3322,0.3645,—
+AfroXLMR,Intent,0.6316,0.5435,0.574,—
+mBERT,Tone,0.9266,0.9259,0.9265,—
+XLM-R,Tone,0.9432,0.9427,0.9432,—
+AfroXLMR,Tone,0.9474,0.9474,0.9473,—
+mBERT,Slot Filling,—,—,—,0.4686
+XLM-R,Slot Filling,—,—,—,0.3396
+AfroXLMR,Slot Filling,—,—,—,0.3255
+Claude Sonnet (zero-shot),Intent,0.87,0.3972,—,—
+Claude Sonnet (zero-shot),Tone,0.77,0.7531,—,—
+GPT-4o mini (zero-shot),Intent,0.82,0.3704,—,—
+GPT-4o mini (zero-shot),Tone,0.59,0.5062,—,—
+Gemini 2.5 Flash (zero-shot),Intent,0.87,0.4002,—,—
+Gemini 2.5 Flash (zero-shot),Tone,0.73,0.696,—,—
