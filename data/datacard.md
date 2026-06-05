@@ -1,25 +1,28 @@
 # Dataset Card — SwahiliNLU
 
-> Following the data documentation framework of Gebru et al. (2021), *Datasheets for Datasets*.
+> Following the data documentation framework of Gebru et al. (2021), *Datasheets for Datasets*. Communications of the ACM, 64(12), 86–92. https://doi.org/10.1145/3458723
 
 ---
 
 ## Dataset Summary
 
-**SwahiliNLU** is a broad-domain, natively constructed intent recognition and slot-filling dataset for Swahili. It comprises 3,636 utterances spanning 10 domains and 175 intent classes, annotated with BIO-compatible slot labels and a three-way pragmatic tone annotation layer (imperative, polite, conversational). It is the first Swahili intent dataset to include tone annotations and the largest natively constructed Swahili intent resource to date.
+**SwahiliNLU** is a broad-domain, natively constructed intent recognition and slot-filling dataset for Swahili. It comprises 3,633 utterances spanning 10 domains and 175 intent classes, annotated with BIO-compatible slot labels and a three-way pragmatic tone annotation layer (imperative, polite, conversational). It is the first Swahili intent dataset to include tone annotations and the largest natively constructed Swahili intent resource to date.
 
 | Property | Value |
 |---|---|
 | **Language** | Swahili (sw) |
 | **Task** | Intent classification, slot filling, tone classification |
-| **Total utterances** | 3,636 |
+| **Total utterances** | 3,633 |
 | **Domains** | 10 |
 | **Intent classes** | 175 |
-| **Slot types** | 50+ |
+| **Slot types** | 105 |
+| **Total slot annotations** | 5,079 |
+| **Utterances with ≥1 slot** | 3,037 (83.6%) |
 | **Tone categories** | 3 (imperative, polite, conversational) |
+| **Inter-annotator agreement (tone)** | κ = 0.87 |
 | **Avg. tokens / utterance** | ~7.2 |
 | **License** | CC BY 4.0 |
-| **Paper** | SwahiliNLU: A Broad-Domain Intent and Slot-Filling Dataset with Pragmatic Tone Annotations for Low-Resource NLU (CIKM 2026) |
+| **Paper** | SwahiliNLU: A Broad-Domain Intent and Slot-Filling Dataset with Pragmatic Tone Annotations for Low-Resource NLU (CIKM 2026, under review) |
 | **DOI (dataset)** | [10.5281/zenodo.20521261](https://doi.org/10.5281/zenodo.20521261) |
 
 ---
@@ -28,12 +31,12 @@
 
 ### Why was this dataset created?
 
-Swahili is spoken by over 200 million people across East and Central Africa and serves as an official language in Tanzania, Kenya, Uganda, and the Democratic Republic of Congo. Despite this reach, Swahili remains severely under-resourced for NLU tasks. Existing multilingual benchmarks either omit Swahili or include it via translation from English, which fails to capture authentic linguistic structures and pragmatic conventions.
+Swahili is spoken by over 200 million people across East and Central Africa and serves as an official language in Tanzania, Kenya, Uganda and the Democratic Republic of Congo. Despite this reach, Swahili remains severely under-resourced for NLU tasks. Existing multilingual benchmarks either omit Swahili or include it via translation from English, which fails to capture authentic linguistic structures and pragmatic conventions.
 
 SwahiliNLU was created to:
 1. Provide a natively constructed Swahili NLU benchmark for the research community
 2. Cover mobile virtual assistant use cases relevant to East African users
-3. Introduce pragmatic tone annotation — a linguistically motivated dimension absent from all prior intent datasets
+3. Introduce pragmatic tone annotation — a linguistically motivated dimension absent from prior Swahili and African-language intent datasets
 
 ### Who created the dataset?
 
@@ -48,7 +51,7 @@ The dataset was created by Alfred Malengo Kondoro (Hanyang University) and Alexa
 | Kalistine Gilala Leopold | Ride-Hailing & Transport |
 | Asfath Hussein | News & Information |
 | Justine Mponzi | Finance |
-| Fredrick Kasanga | Shopping |
+| Fredrick Kasanga | Food Ordering |
 | Clara Haraka Mittah | Travel & Accommodation |
 | Luhende Yusuph Bonda | Health & Lifestyle |
 | Mkupete Mkamba Jaah | Home Automation |
@@ -82,7 +85,7 @@ The dataset consists of text utterances in Swahili, each annotated with:
 | News & Information | 215 | 9 |
 | Ride-Hailing & Transport | 179 | 14 |
 | Home Automation | 208 | 11 |
-| **Total** | **3,636** | **175** |
+| **Total** | **3,633** | **175** |
 
 ### Tone distribution
 
@@ -94,11 +97,11 @@ The dataset consists of text utterances in Swahili, each annotated with:
 
 ### Does the dataset contain all possible instances or a sample?
 
-The dataset is a curated sample of possible Swahili utterances. It does not claim to be exhaustive. Each intent has between 3 and ~20 utterances depending on domain complexity.
+The dataset is a curated sample of possible Swahili utterances. It does not claim to be exhaustive. Each intent has between 3 and approximately 20 utterances depending on domain complexity.
 
 ### Is there any information that could be used to identify individuals?
 
-No. The dataset contains no personal information. All utterances are synthetic — created by annotators for the purpose of this dataset. Contact names (e.g., "John", "Amina") and phone numbers used as slot values are fictional.
+No. The dataset contains no personal information. All utterances are elicited — created by annotators for the purpose of this dataset. Contact names (e.g. "John", "Amina") and phone numbers used as slot values are fictional.
 
 ### Does the dataset contain offensive, harmful, or sensitive content?
 
@@ -141,7 +144,7 @@ Yes. The following preprocessing steps were applied:
 2. **JSON normalisation** — fixed double-escaped JSON from Google Sheets export (`""key""` → `"key"`)
 3. **Tone extraction** — for files where tone was embedded in the slots JSON, it was extracted to a dedicated column and removed from the slots dictionary
 4. **Duplicate removal** — exact duplicate utterances were identified and removed
-5. **Rare intent filtering** — intents with fewer than 3 samples were excluded from train/dev/test splits (2 intents: `arm_security_system`, `schedule_ride`)
+5. **Rare intent filtering** — intents with fewer than 3 samples were excluded from train/dev/test splits (2 intents removed: `arm_security_system`, `schedule_ride`)
 
 ### Is the raw data available?
 
@@ -157,11 +160,11 @@ Yes. The raw CSV files (one per domain) are available in the dataset release on 
 |---|---|
 | Dataset (CSV files) | Zenodo: [10.5281/zenodo.20521261](https://doi.org/10.5281/zenodo.20521261) |
 | Code and notebooks | https://github.com/alfredkondoro/swahili-nlu-intent-evals |
-| Paper | CIKM 2026 Proceedings *(add link after publication)* |
+| Paper | CIKM 2026 Proceedings *(link to be added after publication)* |
 
 ### What license does the dataset use?
 
-The dataset is released under **Creative Commons Attribution 4.0 International (CC BY 4.0)**.  
+The dataset is released under **Creative Commons Attribution 4.0 International (CC BY 4.0)**.
 Code is released under the **MIT License**.
 
 You are free to share and adapt the dataset for any purpose, provided appropriate credit is given.
@@ -181,10 +184,10 @@ Alfred Malengo Kondoro (alfr3do@hanyang.ac.kr) is the primary point of contact.
 ### Will the dataset be updated?
 
 Yes. Planned updates include:
-- Additional utterances for under-represented domains (Ride-Hailing, Home Automation)
+- Additional utterances for under-represented domains (Ride-Hailing, Home Automation, Communication)
 - Code-switching (Swahili-English) utterances
 - Slot-level inter-annotator agreement scores
-- Additional intent classes for emerging mobile assistant use cases
+- Audio and visual extensions to support multimodal intent recognition
 
 ### How can errors or issues be reported?
 
@@ -212,33 +215,28 @@ Please open a GitHub issue at https://github.com/alfredkondoro/swahili-nlu-inten
 
 ## Known Limitations
 
-1. **Dataset size** — 3,636 utterances is modest compared to English benchmarks. Models trained on this dataset may not generalise to out-of-distribution intents.
-2. **Class imbalance** — intent class sizes range from ~3 to ~20 utterances. This affects Macro-F1 reliability for rare intents.
+1. **Dataset size** — 3,633 utterances is modest compared to English benchmarks. Models trained on this dataset may not generalise to out-of-distribution intents.
+2. **Class imbalance** — intent class sizes range from approximately 3 to 20 utterances, which affects Macro-F1 reliability for rare intents.
 3. **Elicited utterances** — utterances were written by contributors rather than collected from real user interactions. Distribution may differ from real-world usage.
 4. **No code-switching** — Swahili-English code-switching, common in urban East Africa, is not covered in this version.
 5. **Single-turn utterances** — the dataset does not cover multi-turn dialogue.
 6. **Dialect coverage** — the dataset reflects Tanzanian Standard Swahili. Kenyan Swahili and Congolese Swahili variants are not covered.
+7. **IAA scope** — inter-annotator agreement was measured for tone labels only (κ = 0.87). Intent and slot-level IAA are priorities for the next release.
 
 ---
 
 ## Citation
 
-If you use SwahiliNLU in your research, please cite:
+The paper describing this dataset is currently under review. A full citation will be added upon publication. In the meantime, if you use SwahiliNLU please cite the Zenodo dataset record:
 
-```bibtex
-@inproceedings{kondoro2026swahilinlu,
-  title     = {{SwahiliNLU}: A Broad-Domain Intent and Slot-Filling Dataset
-               with Pragmatic Tone Annotations for Low-Resource {NLU}},
-  author    = {Kondoro, Alfred Malengo and Kivaisi, Alexander Rogath},
-  booktitle = {Proceedings of the 35th ACM International Conference on
-               Information and Knowledge Management (CIKM '26)},
-  year      = {2026},
-  address   = {Rome, Italy},
-  publisher = {ACM},
-  doi       = {10.5281/zenodo.20521261}
-}
-```
+> Kondoro, A. M., & Kivaisi, A. R. (2026). *SwahiliNLU: A Broad-Domain Intent and Slot-Filling Dataset with Pragmatic Tone Annotations*. Zenodo. https://doi.org/10.5281/zenodo.20521261
+
+### Framework reference
+
+This datacard follows:
+
+> Gebru, T., Morgenstern, J., Vecchione, B., Wortman Vaughan, J., Wallach, H., Daumé III, H., & Crawford, K. (2021). Datasheets for datasets. *Communications of the ACM*, 64(12), 86–92. https://doi.org/10.1145/3458723
 
 ---
 
-*Dataset card version 1.0 — June 2026*
+*Dataset card version 1.1 — June 2026*
