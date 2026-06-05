@@ -19,7 +19,7 @@
 | **Total slot annotations** | 5,079 |
 | **Utterances with ≥1 slot** | 3,037 (83.6%) |
 | **Tone categories** | 3 (imperative, polite, conversational) |
-| **Inter-annotator agreement (tone)** | κ = 0.87 (10% double-annotated subset) |
+| **Inter-annotator agreement (overall)** | κ = 0.87 (intent, tone and slot, 10% subset) |
 | **Avg. tokens / utterance** | ~7.2 |
 | **License** | CC BY 4.0 |
 | **Paper** | SwahiliNLU: A Broad-Domain Intent and Slot-Filling Dataset with Pragmatic Tone Annotations for Low-Resource NLU (CIKM 2026, under review) |
@@ -36,7 +36,7 @@ Swahili is spoken by over 200 million people across East and Central Africa and 
 SwahiliNLU was created to:
 1. Provide a natively constructed Swahili NLU benchmark for the research community
 2. Cover mobile virtual assistant use cases relevant to East African users
-3. Introduce pragmatic tone annotation validated at κ = 0.87 on a 10% double-annotated subset — a dimension absent from prior Swahili and African-language intent datasets
+3. Introduce pragmatic tone annotation with a compound inter-annotator agreement of κ = 0.87 across intent, tone and slot on a 10% double-annotated subset — a dimension absent from prior Swahili and African-language intent datasets
 
 ### Who created the dataset?
 
@@ -221,7 +221,7 @@ Please open a GitHub issue at https://github.com/alfredkondoro/swahili-nlu-inten
 4. **No code-switching** — Swahili-English code-switching, common in urban East Africa, is not covered in this version.
 5. **Single-turn utterances** — the dataset does not cover multi-turn dialogue.
 6. **Dialect coverage** — the dataset reflects Tanzanian Standard Swahili. Kenyan Swahili and Congolese Swahili variants are not covered.
-7. **IAA scope** — inter-annotator agreement was measured for tone labels only (κ = 0.87, 10% subset). Intent and slot-level IAA remain priorities for the next release.
+7. **IAA scope** — κ = 0.87 is a compound score across intent, tone and slot annotations on a 10% subset. Per-layer breakdown (intent, tone and slot separately) is a priority for the next release.
 
 ---
 
